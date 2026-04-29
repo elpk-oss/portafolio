@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PekitaVmo | Diseñador</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+header p {
+    color: #aaa;
+}
+
+.section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.card p {
+    padding: 10px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.about, .contact {
+    text-align: center;
+}
+
+a {
+    color: #00bfff;
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>PekitaVmo</h1>
+    <p>Diseñador gráfico | Logos, ilustraciones y portadas</p>
+</header>
+
+<section class="section">
+    <h2>🎨 Mis Diseños</h2>
+    <div class="grid">
+
+        <div class="card">
+            <img src="img/1.png">
+            <p>Ilustración estilo cartoon con paleta amarillo/negro</p>
+        </div>
+
+        <div class="card">
+            <img src="img/2.png">
+            <p>Diseño personaje con identidad fuerte en rojo</p>
+        </div>
+
+        <div class="card">
+            <img src="img/3.png">
+            <p>Ilustración estilo anime con detalles suaves</p>
+        </div>
+
+        <div class="card">
+            <img src="img/4.png">
+            <p>Diseño cartoon expresivo tipo caricatura</p>
+        </div>
+
+        <div class="card">
+            <img src="img/5.png">
+            <p>Logo/ícono estilo simple y llamativo</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section about">
+    <h2>👤 Sobre mí</h2>
+    <p>
+        Soy PekitaVmo, diseñador gráfico especializado en ilustraciones,
+        logos y diseño visual con estilo propio. Me enfoco en crear diseños
+        llamativos, simples y con identidad fuerte.
+    </p>
+</section>
+
+<section class="section contact">
+    <h2>📩 Contacto</h2>
+    <p>💬 Discord: pekitavmoyt</p>
+    <p>🎮 YouTube: <a href="https://youtube.com/@PekitaVmo" target="_blank">Mi canal</a></p>
+</section>
+
+<footer>
+    <p>© 2026 PekitaVmo</p>
+</footer>
+
+</body>
+</html>
