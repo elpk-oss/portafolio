@@ -34,8 +34,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #00bfff;
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     animation: slideDown 0.5s ease;
 }
 
@@ -47,13 +46,13 @@ nav {
 nav .logo {
     font-size: 1.5em;
     font-weight: bold;
-    color: #00bfff;
+    color: #e0e0e0;
     text-decoration: none;
     transition: 0.3s;
 }
 
 nav .logo:hover {
-    text-shadow: 0 0 10px #00bfff;
+    color: #b3b3b3;
 }
 
 nav .nav-links {
@@ -65,15 +64,14 @@ nav .nav-links {
 }
 
 nav .nav-links a {
-    color: #aaa;
+    color: #999;
     text-decoration: none;
     font-size: 0.9em;
     transition: 0.3s;
 }
 
 nav .nav-links a:hover {
-    color: #00bfff;
-    text-shadow: 0 0 10px #00bfff;
+    color: #e0e0e0;
 }
 
 /* FILTERS */
@@ -87,21 +85,21 @@ nav .nav-links a:hover {
 
 .filter-btn {
     padding: 8px 20px;
-    background: #1a1a1a;
-    border: 2px solid #00bfff;
-    color: #00bfff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #999;
     border-radius: 25px;
     cursor: pointer;
     transition: 0.3s;
     font-size: 0.9em;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: #00bfff;
-    color: #0f0f0f;
-    box-shadow: 0 0 15px #00bfff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* HEADER */
@@ -115,15 +113,12 @@ header {
 header h1 {
     font-size: 3.5em;
     margin: 0;
-    background: linear-gradient(135deg, #00bfff, #00ff88);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 30px rgba(0, 191, 255, 0.3);
+    color: #f5f5f5;
+    font-weight: 700;
 }
 
 header p {
-    color: #aaa;
+    color: #999;
     font-size: 1.1em;
     margin-top: 10px;
 }
@@ -139,8 +134,8 @@ header p {
     font-size: 2.5em;
     margin-bottom: 40px;
     text-align: center;
-    color: #00bfff;
-    text-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+    color: #e0e0e0;
+    font-weight: 600;
 }
 
 /* GRID */
@@ -154,7 +149,7 @@ header p {
 .card {
     position: relative;
     background: #1a1a1a;
-    border: 1px solid #00bfff33;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
@@ -173,8 +168,8 @@ header p {
 
 .card:hover {
     transform: translateY(-10px) scale(1.05);
-    border-color: #00bfff;
-    box-shadow: 0 15px 40px rgba(0, 191, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
 .card img {
@@ -185,7 +180,7 @@ header p {
 }
 
 .card:hover img {
-    filter: brightness(0.8);
+    filter: brightness(0.9);
 }
 
 /* OVERLAY */
@@ -195,15 +190,15 @@ header p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 191, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4);
     opacity: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     transition: 0.3s;
-    font-weight: bold;
-    text-shadow: 0 0 10px #00bfff;
+    font-weight: 500;
+    color: #f5f5f5;
 }
 
 .card:hover .overlay {
@@ -212,7 +207,7 @@ header p {
 
 .card p {
     padding: 15px;
-    color: #aaa;
+    color: #999;
     font-size: 0.95em;
 }
 
@@ -244,7 +239,7 @@ header p {
     max-width: 90%;
     max-height: 85vh;
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 }
 
 .modal:target {
@@ -255,7 +250,7 @@ header p {
     position: absolute;
     top: 30px;
     right: 50px;
-    color: #00bfff;
+    color: #e0e0e0;
     font-size: 40px;
     text-decoration: none;
     cursor: pointer;
@@ -264,7 +259,7 @@ header p {
 }
 
 .close:hover {
-    text-shadow: 0 0 10px #00bfff;
+    color: #999;
     transform: scale(1.2);
 }
 
@@ -273,7 +268,7 @@ header p {
     top: 50%;
     transform: translateY(-50%);
     font-size: 40px;
-    color: #00bfff;
+    color: #e0e0e0;
     cursor: pointer;
     padding: 20px;
     transition: 0.3s;
@@ -282,7 +277,7 @@ header p {
 }
 
 .modal-nav:hover {
-    text-shadow: 0 0 15px #00bfff;
+    color: #999;
     transform: translateY(-50%) scale(1.2);
 }
 
@@ -298,8 +293,8 @@ header p {
 }
 
 .service-card {
-    background: linear-gradient(135deg, #1a1a1a, #1f2937);
-    border: 1px solid #00bfff33;
+    background: linear-gradient(135deg, #1a1a1a, #202030);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 30px;
     text-align: center;
@@ -309,8 +304,8 @@ header p {
 
 .service-card:hover {
     transform: translateY(-15px);
-    border-color: #00bfff;
-    box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .service-card .icon {
@@ -319,12 +314,13 @@ header p {
 }
 
 .service-card h3 {
-    color: #00bfff;
+    color: #e0e0e0;
     margin: 15px 0;
+    font-weight: 600;
 }
 
 .service-card p {
-    color: #aaa;
+    color: #999;
     line-height: 1.6;
 }
 
@@ -336,7 +332,7 @@ header p {
 .about p, .contact p {
     font-size: 1.05em;
     line-height: 1.8;
-    color: #ccc;
+    color: #b3b3b3;
     max-width: 600px;
     margin: 15px auto;
 }
@@ -346,7 +342,7 @@ header p {
     max-width: 600px;
     margin: 40px auto;
     background: #1a1a1a;
-    border: 1px solid #00bfff33;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 30px;
 }
@@ -359,8 +355,8 @@ header p {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #00bfff;
-    font-weight: bold;
+    color: #e0e0e0;
+    font-weight: 600;
 }
 
 .form-group input,
@@ -368,18 +364,23 @@ header p {
     width: 100%;
     padding: 12px;
     background: #0f0f0f;
-    border: 1px solid #00bfff33;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     color: white;
     font-family: inherit;
     transition: 0.3s;
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #00bfff;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: #151515;
 }
 
 .form-group textarea {
@@ -390,10 +391,10 @@ header p {
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #00bfff, #00ff88);
+    background: #e0e0e0;
     border: none;
     color: #0f0f0f;
-    font-weight: bold;
+    font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1em;
@@ -401,19 +402,40 @@ header p {
 }
 
 .submit-btn:hover {
+    background: #ffffff;
     transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+}
+
+.form-message {
+    display: none;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.form-message.success {
+    background: rgba(100, 200, 100, 0.2);
+    color: #a8d5a8;
+    display: block;
+}
+
+.form-message.error {
+    background: rgba(200, 100, 100, 0.2);
+    color: #d5a8a8;
+    display: block;
 }
 
 /* LINKS */
 a {
-    color: #00bfff;
+    color: #e0e0e0;
     text-decoration: none;
     transition: 0.3s;
 }
 
 a:hover {
-    text-shadow: 0 0 10px #00bfff;
+    color: #b3b3b3;
 }
 
 /* SOCIAL */
@@ -430,27 +452,27 @@ a:hover {
     align-items: center;
     gap: 8px;
     padding: 12px 20px;
-    background: #1a1a1a;
-    border: 2px solid #00bfff;
-    color: #00bfff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
     border-radius: 25px;
     text-decoration: none;
     transition: 0.3s;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .social-btn:hover {
-    background: #00bfff;
-    color: #0f0f0f;
-    box-shadow: 0 0 15px #00bfff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #f5f5f5;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 40px 20px;
-    color: #777;
-    border-top: 1px solid #00bfff33;
+    color: #666;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 60px;
 }
 
@@ -720,7 +742,7 @@ footer p {
     <h2>📩 Contacto</h2>
     <p>¿Tienes un proyecto en mente? ¡Hagámoslo realidad juntos!</p>
     
-    <form class="contact-form" action="https://formspree.io/f/xzzbqwad" method="POST">
+    <form class="contact-form" id="contactForm">
         <div class="form-group">
             <label for="name">Tu Nombre</label>
             <input type="text" id="name" name="name" required>
@@ -742,6 +764,7 @@ footer p {
         </div>
 
         <button type="submit" class="submit-btn">📧 Enviar Mensaje</button>
+        <div class="form-message" id="formMessage"></div>
     </form>
 
     <div class="social-links">
@@ -806,6 +829,106 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keydown', function(event) {
     if (event.key === 'ArrowRight') changeImage(1);
     if (event.key === 'ArrowLeft') changeImage(-1);
+});
+
+// FORMULARIO DE CONTACTO
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = this.querySelector('.submit-btn');
+    
+    // Datos del formulario
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const project = document.getElementById('project').value;
+    const message = document.getElementById('message').value;
+    
+    // Usar EmailJS
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        project_type: project,
+        message: message,
+        to_email: 'medicenelpk@gmail.com'
+    };
+    
+    try {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '📧 Enviando...';
+        
+        // Inicializar EmailJS si no está cargado
+        if (!window.emailjs) {
+            // Cargar EmailJS desde CDN
+            await new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js';
+                script.onload = resolve;
+                document.head.appendChild(script);
+            });
+        }
+        
+        // Inicializar con tu service ID (público)
+        emailjs.init('service_placeholder');
+        
+        // Enviar email
+        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                service_id: 'service_placeholder',
+                template_id: 'template_placeholder',
+                user_id: 'public',
+                template_params: {
+                    from_name: name,
+                    from_email: email,
+                    project_type: project,
+                    message: message,
+                    to_email: 'medicenelpk@gmail.com'
+                }
+            })
+        });
+        
+        // Si EmailJS no funciona, usar endpoint alternativo
+        const response2 = await fetch('https://formspree.io/f/xzzbqwad', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                project: project,
+                message: message
+            })
+        });
+        
+        if (response2.ok) {
+            formMessage.textContent = '✅ ¡Mensaje enviado! Te responderé pronto.';
+            formMessage.classList.add('success');
+            formMessage.classList.remove('error');
+            
+            // Limpiar formulario
+            this.reset();
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                formMessage.classList.remove('success');
+                formMessage.textContent = '';
+            }, 5000);
+        } else {
+            throw new Error('Error en el envío');
+        }
+    } catch (error) {
+        formMessage.textContent = '❌ Hubo un error. Intenta nuevamente o contáctame por Discord.';
+        formMessage.classList.add('error');
+        formMessage.classList.remove('success');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '📧 Enviar Mensaje';
+    }
 });
 </script>
 
