@@ -4,12 +4,72 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="PekitaVmo - Diseñador gráfico especializado en logos, ilustraciones y portadas">
+<meta name="theme-color" content="#0f0f0f">
 <meta property="og:title" content="PekitaVmo | Diseñador Gráfico">
 <meta property="og:description" content="Logos, ilustraciones y contenido visual con estilo único">
 <meta property="og:image" content="https://pekitavmo.github.io/portafolio/img/MacacoAmarillo.png">
-<title>PekitaVmo | Diseñador</title>
+<meta property="og:type" content="website">
+<title>PekitaVmo | Diseñador Gráfico Profesional</title>
+
+<!-- ============================================
+     CONFIG FÁCIL DE EDITAR
+     ============================================ -->
+<script>
+const CONFIG = {
+    // Email para recibir mensajes
+    email: 'medicenelpk@gmail.com',
+    
+    // Webhook de Discord (opcional - deja "" para desactivar)
+    discordWebhook: '', // Si quieres recibir mensajes en Discord, pon el webhook aquí
+    
+    // Redes sociales
+    social: {
+        discord: 'https://discord.com/users/pekitavmoyt',
+        youtube: 'https://youtube.com/@PekitaVmo',
+        instagram: '', // Ej: https://instagram.com/tu_usuario
+        twitter: '',    // Ej: https://twitter.com/tu_usuario
+    },
+    
+    // Palabras prohibidas (se filtran en reseñas)
+    forbiddenWords: ['mierda', 'puta', 'verga', 'bastardo', 'idiota', 'imbécil', 'pendejo', 'malparido'],
+    
+    // Año actual (para el footer)
+    year: new Date().getFullYear(),
+    
+    // Nombre del artista
+    name: 'PekitaVmo',
+    
+    // Descripción corta
+    description: 'Diseñador gráfico especializado en logos, ilustraciones y portadas'
+};
+</script>
 
 <style>
+/* ============================================
+   VARIABLES CSS PERSONALIZABLES
+   ============================================ */
+:root {
+    --dark-bg: #0f0f0f;
+    --dark-bg-secondary: #1a1a2e;
+    --dark-card: #1a1a1a;
+    --dark-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #f5f5f5;
+    --text-secondary: #999;
+    --text-light: #b3b3b3;
+    --accent: #e0e0e0;
+    
+    --light-bg: #ffffff;
+    --light-bg-secondary: #f5f5f5;
+    --light-card: #ffffff;
+    --light-border: rgba(0, 0, 0, 0.1);
+    --light-text-primary: #1a1a1a;
+    --light-text-secondary: #666;
+    --light-text-light: #333;
+    --light-accent: #222;
+    
+    --transition: 0.3s ease;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -17,9 +77,16 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-secondary) 100%);
+    color: var(--text-primary);
     scroll-behavior: smooth;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* MODO CLARO */
+body.light-mode {
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-secondary) 100%);
+    color: var(--light-text-primary);
 }
 
 /* NAVBAR */
@@ -34,8 +101,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--dark-border);
     animation: slideDown 0.5s ease;
+    transition: background var(--transition);
+}
+
+body.light-mode nav {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom-color: var(--light-border);
 }
 
 @keyframes slideDown {
@@ -43,16 +116,29 @@ nav {
     to { transform: translateY(0); opacity: 1; }
 }
 
+nav .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
 nav .logo {
     font-size: 1.5em;
     font-weight: bold;
-    color: #e0e0e0;
+    color: var(--accent);
     text-decoration: none;
-    transition: 0.3s;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+body.light-mode nav .logo {
+    color: var(--light-accent);
 }
 
 nav .logo:hover {
-    color: #b3b3b3;
+    transform: scale(1.05);
 }
 
 nav .nav-links {
@@ -64,14 +150,49 @@ nav .nav-links {
 }
 
 nav .nav-links a {
-    color: #999;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9em;
-    transition: 0.3s;
+    transition: var(--transition);
 }
 
-nav .nav-links a:hover {
-    color: #e0e0e0;
+body.light-mode nav .nav-links a {
+    color: var(--light-text-secondary);
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active {
+    color: var(--accent);
+}
+
+body.light-mode nav .nav-links a:hover,
+body.light-mode nav .nav-links a.active {
+    color: var(--light-accent);
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--dark-border);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    transition: var(--transition);
+}
+
+body.light-mode .theme-toggle {
+    border-color: var(--light-border);
+    color: var(--light-accent);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(20deg);
 }
 
 /* FILTERS */
@@ -86,20 +207,32 @@ nav .nav-links a:hover {
 .filter-btn {
     padding: 8px 20px;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #999;
+    border: 1px solid var(--dark-border);
+    color: var(--text-secondary);
     border-radius: 25px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: var(--transition);
     font-size: 0.9em;
     font-weight: 500;
+}
+
+body.light-mode .filter-btn {
+    border-color: var(--light-border);
+    color: var(--light-text-secondary);
 }
 
 .filter-btn:hover,
 .filter-btn.active {
     background: rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
+    color: var(--accent);
     border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.light-mode .filter-btn:hover,
+body.light-mode .filter-btn.active {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--light-accent);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* HEADER */
@@ -113,12 +246,12 @@ header {
 header h1 {
     font-size: 3.5em;
     margin: 0;
-    color: #f5f5f5;
+    color: var(--text-primary);
     font-weight: 700;
 }
 
 header p {
-    color: #999;
+    color: var(--text-secondary);
     font-size: 1.1em;
     margin-top: 10px;
 }
@@ -134,7 +267,7 @@ header p {
     font-size: 2.5em;
     margin-bottom: 40px;
     text-align: center;
-    color: #e0e0e0;
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -148,15 +281,20 @@ header p {
 /* CARD */
 .card {
     position: relative;
-    background: #1a1a1a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
     border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
     transform: translateY(20px);
     opacity: 0;
     animation: fadeUp 0.8s forwards;
-    transition: 0.3s;
+    transition: var(--transition);
+}
+
+body.light-mode .card {
+    background: var(--light-card);
+    border-color: var(--light-border);
 }
 
 .card:nth-child(1) { animation-delay: 0.1s; }
@@ -172,11 +310,15 @@ header p {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
+body.light-mode .card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
 .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: 0.3s;
+    transition: var(--transition);
 }
 
 .card:hover img {
@@ -196,9 +338,9 @@ header p {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    transition: 0.3s;
+    transition: var(--transition);
     font-weight: 500;
-    color: #f5f5f5;
+    color: var(--text-primary);
 }
 
 .card:hover .overlay {
@@ -207,8 +349,12 @@ header p {
 
 .card p {
     padding: 15px;
-    color: #999;
+    color: var(--text-secondary);
     font-size: 0.95em;
+}
+
+body.light-mode .card p {
+    color: var(--light-text-secondary);
 }
 
 /* MODAL */
@@ -250,16 +396,16 @@ header p {
     position: absolute;
     top: 30px;
     right: 50px;
-    color: #e0e0e0;
+    color: var(--accent);
     font-size: 40px;
     text-decoration: none;
     cursor: pointer;
-    transition: 0.3s;
+    transition: var(--transition);
     z-index: 1001;
 }
 
 .close:hover {
-    color: #999;
+    color: var(--text-secondary);
     transform: scale(1.2);
 }
 
@@ -268,16 +414,16 @@ header p {
     top: 50%;
     transform: translateY(-50%);
     font-size: 40px;
-    color: #e0e0e0;
+    color: var(--accent);
     cursor: pointer;
     padding: 20px;
-    transition: 0.3s;
+    transition: var(--transition);
     user-select: none;
     z-index: 1001;
 }
 
 .modal-nav:hover {
-    color: #999;
+    color: var(--text-secondary);
     transform: translateY(-50%) scale(1.2);
 }
 
@@ -293,13 +439,18 @@ header p {
 }
 
 .service-card {
-    background: linear-gradient(135deg, #1a1a1a, #202030);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, var(--dark-card), #202030);
+    border: 1px solid var(--dark-border);
     border-radius: 15px;
     padding: 30px;
     text-align: center;
-    transition: 0.3s;
+    transition: var(--transition);
     transform: translateY(0);
+}
+
+body.light-mode .service-card {
+    background: linear-gradient(135deg, var(--light-card), #f0f0f0);
+    border-color: var(--light-border);
 }
 
 .service-card:hover {
@@ -308,20 +459,33 @@ header p {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+body.light-mode .service-card:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
 .service-card .icon {
     font-size: 3em;
     margin-bottom: 15px;
 }
 
 .service-card h3 {
-    color: #e0e0e0;
+    color: var(--accent);
     margin: 15px 0;
     font-weight: 600;
 }
 
+body.light-mode .service-card h3 {
+    color: var(--light-accent);
+}
+
 .service-card p {
-    color: #999;
+    color: var(--text-secondary);
     line-height: 1.6;
+}
+
+body.light-mode .service-card p {
+    color: var(--light-text-secondary);
 }
 
 /* TEXTOS */
@@ -332,19 +496,30 @@ header p {
 .about p, .contact p {
     font-size: 1.05em;
     line-height: 1.8;
-    color: #b3b3b3;
+    color: var(--text-light);
     max-width: 600px;
     margin: 15px auto;
 }
 
-/* FORMULARIO */
-.contact-form {
+body.light-mode .about p, 
+body.light-mode .contact p {
+    color: var(--light-text-secondary);
+}
+
+/* FORMULARIOS */
+.contact-form, .review-form {
     max-width: 600px;
     margin: 40px auto;
-    background: #1a1a1a;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
     border-radius: 15px;
     padding: 30px;
+}
+
+body.light-mode .contact-form,
+body.light-mode .review-form {
+    background: var(--light-card);
+    border-color: var(--light-border);
 }
 
 .form-group {
@@ -355,20 +530,33 @@ header p {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #e0e0e0;
+    color: var(--accent);
     font-weight: 600;
 }
 
+body.light-mode .form-group label {
+    color: var(--light-accent);
+}
+
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 12px;
     background: #0f0f0f;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--dark-border);
     border-radius: 8px;
-    color: white;
+    color: var(--text-primary);
     font-family: inherit;
-    transition: 0.3s;
+    transition: var(--transition);
+}
+
+body.light-mode .form-group input,
+body.light-mode .form-group textarea,
+body.light-mode .form-group select {
+    background: #f5f5f5;
+    border-color: var(--light-border);
+    color: var(--light-text-primary);
 }
 
 .form-group input::placeholder,
@@ -377,10 +565,20 @@ header p {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: rgba(255, 255, 255, 0.3);
     background: #151515;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .form-group input:focus,
+body.light-mode .form-group textarea:focus,
+body.light-mode .form-group select:focus {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
 .form-group textarea {
@@ -388,54 +586,143 @@ header p {
     min-height: 120px;
 }
 
-.submit-btn {
+.submit-btn, .submit-review-btn {
     width: 100%;
     padding: 12px;
-    background: #e0e0e0;
+    background: var(--accent);
     border: none;
-    color: #0f0f0f;
+    color: var(--dark-bg);
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1em;
-    transition: 0.3s;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
 }
 
-.submit-btn:hover {
+body.light-mode .submit-btn,
+body.light-mode .submit-review-btn {
+    background: var(--light-accent);
+    color: var(--light-bg);
+}
+
+.submit-btn:hover, .submit-review-btn:hover {
     background: #ffffff;
     transform: scale(1.02);
 }
 
-.form-message {
+body.light-mode .submit-btn:hover,
+body.light-mode .submit-review-btn:hover {
+    background: #1a1a1a;
+}
+
+.submit-btn:disabled, .submit-review-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-message, .review-message {
     display: none;
     text-align: center;
     padding: 15px;
     border-radius: 8px;
     margin-top: 15px;
     font-weight: 500;
+    animation: slideDown 0.3s ease;
 }
 
-.form-message.success {
+.form-message.success, .review-message.success {
     background: rgba(100, 200, 100, 0.2);
     color: #a8d5a8;
     display: block;
 }
 
-.form-message.error {
+.form-message.error, .review-message.error {
     background: rgba(200, 100, 100, 0.2);
     color: #d5a8a8;
     display: block;
 }
 
+/* RESEÑAS DISPLAY */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.review-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 15px;
+    padding: 25px;
+    animation: fadeUp 0.8s forwards;
+    position: relative;
+}
+
+body.light-mode .review-card {
+    background: var(--light-card);
+    border-color: var(--light-border);
+}
+
+.review-card:nth-child(1) { animation-delay: 0.1s; }
+.review-card:nth-child(2) { animation-delay: 0.2s; }
+.review-card:nth-child(3) { animation-delay: 0.3s; }
+.review-card:nth-child(4) { animation-delay: 0.4s; }
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+.review-name {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 1.1em;
+}
+
+body.light-mode .review-name {
+    color: var(--light-accent);
+}
+
+.review-rating {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-style: italic;
+    margin: 15px 0;
+}
+
+body.light-mode .review-text {
+    color: var(--light-text-secondary);
+}
+
+.review-date {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 10px;
+}
+
 /* LINKS */
 a {
-    color: #e0e0e0;
+    color: var(--accent);
     text-decoration: none;
-    transition: 0.3s;
+    transition: var(--transition);
+}
+
+body.light-mode a {
+    color: var(--light-accent);
 }
 
 a:hover {
-    color: #b3b3b3;
+    color: var(--text-light);
 }
 
 /* SOCIAL */
@@ -453,18 +740,73 @@ a:hover {
     gap: 8px;
     padding: 12px 20px;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #e0e0e0;
+    border: 1px solid var(--dark-border);
+    color: var(--accent);
     border-radius: 25px;
     text-decoration: none;
-    transition: 0.3s;
+    transition: var(--transition);
     font-weight: 500;
+}
+
+body.light-mode .social-btn {
+    border-color: var(--light-border);
+    color: var(--light-accent);
 }
 
 .social-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
-    color: #f5f5f5;
+    color: var(--text-primary);
+    transform: translateY(-3px);
+}
+
+body.light-mode .social-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: var(--light-text-primary);
+}
+
+/* SCROLL TO TOP */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--accent);
+    border: none;
+    border-radius: 50%;
+    color: var(--dark-bg);
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 90;
+    animation: slideUp 0.3s ease;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode .scroll-to-top {
+    background: var(--light-accent);
+    color: var(--light-bg);
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* FOOTER */
@@ -472,8 +814,14 @@ footer {
     text-align: center;
     padding: 40px 20px;
     color: #666;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--dark-border);
     margin-top: 60px;
+    transition: var(--transition);
+}
+
+body.light-mode footer {
+    border-top-color: var(--light-border);
+    color: #999;
 }
 
 footer p {
@@ -487,10 +835,30 @@ footer p {
 }
 
 @keyframes fadeUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
     to {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/* LOADING SPINNER */
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 /* RESPONSIVE */
@@ -520,6 +888,14 @@ footer p {
     .modal img {
         max-height: 70vh;
     }
+
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2em;
+    }
 }
 
 @media (max-width: 480px) {
@@ -527,9 +903,16 @@ footer p {
         padding: 12px 15px;
     }
 
+    nav .nav-container {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
     nav .nav-links {
         gap: 10px;
         font-size: 0.8em;
+        width: 100%;
+        justify-content: flex-end;
     }
 
     header {
@@ -560,6 +943,12 @@ footer p {
         padding: 6px 15px;
         font-size: 0.85em;
     }
+
+    .theme-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
 }
 </style>
 
@@ -568,13 +957,17 @@ footer p {
 
 <!-- NAVBAR -->
 <nav>
-    <a href="#" class="logo">✨ PekitaVmo</a>
-    <ul class="nav-links">
-        <li><a href="#logos">Logos</a></li>
-        <li><a href="#ilustraciones">Ilustraciones</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-    </ul>
+    <div class="nav-container">
+        <a href="#" class="logo" onclick="scrollToTop()">✨ PekitaVmo</a>
+        <ul class="nav-links">
+            <li><a href="#logos">Logos</a></li>
+            <li><a href="#ilustraciones">Ilustraciones</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#resenas">Reseñas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">🌙</button>
+    </div>
 </nav>
 
 <!-- HEADER -->
@@ -598,13 +991,13 @@ footer p {
     <div class="grid">
 
         <a href="#img1" class="card" data-category="logos">
-            <img src="img/MacacoAmarillo.png" alt="Logo minimalista">
+            <img src="img/MacacoAmarillo.png" alt="Logo minimalista" loading="lazy">
             <div class="overlay">Ver diseño</div>
             <p>Logo minimalista con colores llamativos para identidad visual</p>
         </a>
 
         <a href="#img2" class="card" data-category="logos">
-            <img src="img/LogoparaMecoskyperodesapareció.png" alt="Logo Mecosty">
+            <img src="img/LogoparaMecoskyperodesapareció.png" alt="Logo Mecosty" loading="lazy">
             <div class="overlay">Ver diseño</div>
             <p>Logo estilo cartoon expresivo con personalidad fuerte</p>
         </a>
@@ -618,19 +1011,19 @@ footer p {
     <div class="grid">
 
         <a href="#img3" class="card" data-category="ilustraciones">
-            <img src="img/LogoBiluVmoDibujado.png" alt="Bilu Vmo Ilustración">
+            <img src="img/LogoBiluVmoDibujado.png" alt="Bilu Vmo Ilustración" loading="lazy">
             <div class="overlay">Ver diseño</div>
             <p>Ilustración cartoon con contraste alto y estilo dinámico</p>
         </a>
 
         <a href="#img4" class="card" data-category="ilustraciones">
-            <img src="img/LogoFanArtAbstro.png" alt="FanArt">
+            <img src="img/LogoFanArtAbstro.png" alt="FanArt" loading="lazy">
             <div class="overlay">Ver diseño</div>
             <p>FanArt con enfoque en identidad visual del personaje</p>
         </a>
 
         <a href="#img5" class="card" data-category="ilustraciones">
-            <img src="img/ImagenAnime.png" alt="Ilustración Anime">
+            <img src="img/ImagenAnime.png" alt="Ilustración Anime" loading="lazy">
             <div class="overlay">Ver diseño</div>
             <p>Ilustración estilo anime pensada para portada digital</p>
         </a>
@@ -680,7 +1073,7 @@ footer p {
     </div>
 </section>
 
-<!-- MODALES -->
+<!-- MODALES DE GALERÍA -->
 <div id="img1" class="modal">
     <div class="modal-content">
         <a href="#" class="close">&times;</a>
@@ -737,6 +1130,46 @@ footer p {
     </p>
 </section>
 
+<!-- RESEÑAS -->
+<section class="section" id="resenas">
+    <h2>⭐ Reseñas</h2>
+    
+    <!-- FORMULARIO DE RESEÑA -->
+    <form class="review-form" id="reviewForm">
+        <div class="form-group">
+            <label for="reviewName">Tu Nombre</label>
+            <input type="text" id="reviewName" name="reviewName" placeholder="Ej: Juan García" required>
+        </div>
+
+        <div class="form-group">
+            <label for="reviewText">Tu Reseña</label>
+            <textarea id="reviewText" name="reviewText" placeholder="Cuéntanos tu experiencia..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="reviewRating">Calificación</label>
+            <select id="reviewRating" name="reviewRating" required>
+                <option value="">Selecciona una calificación</option>
+                <option value="⭐">1 Estrella</option>
+                <option value="⭐⭐">2 Estrellas</option>
+                <option value="⭐⭐⭐">3 Estrellas</option>
+                <option value="⭐⭐⭐⭐">4 Estrellas</option>
+                <option value="⭐⭐⭐⭐⭐">5 Estrellas</option>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-review-btn">📝 Enviar Reseña</button>
+        <div class="review-message" id="reviewMessage"></div>
+    </form>
+
+    <!-- RESEÑAS MOSTRADAS -->
+    <div class="reviews-grid" id="reviewsContainer">
+        <p style="text-align: center; grid-column: 1/-1; color: var(--text-secondary);">
+            Aún no hay reseñas. ¡Sé el primero en dejar una! 🚀
+        </p>
+    </div>
+</section>
+
 <!-- CONTACTO -->
 <section class="section contact" id="contacto">
     <h2>📩 Contacto</h2>
@@ -745,12 +1178,12 @@ footer p {
     <form class="contact-form" id="contactForm">
         <div class="form-group">
             <label for="name">Tu Nombre</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
         </div>
 
         <div class="form-group">
             <label for="email">Tu Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
         </div>
 
         <div class="form-group">
@@ -760,7 +1193,7 @@ footer p {
 
         <div class="form-group">
             <label for="message">Cuéntame sobre tu proyecto</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message" placeholder="Describe tu proyecto detalladamente..." required></textarea>
         </div>
 
         <button type="submit" class="submit-btn">📧 Enviar Mensaje</button>
@@ -768,8 +1201,8 @@ footer p {
     </form>
 
     <div class="social-links">
-        <a href="https://discord.com/users/pekitavmoyt" class="social-btn" target="_blank">💬 Discord</a>
-        <a href="https://youtube.com/@PekitaVmo" class="social-btn" target="_blank">🎮 YouTube</a>
+        <a href="https://discord.com/users/pekitavmoyt" class="social-btn" target="_blank" rel="noopener">💬 Discord</a>
+        <a href="https://youtube.com/@PekitaVmo" class="social-btn" target="_blank" rel="noopener">🎮 YouTube</a>
         <a href="mailto:medicenelpk@gmail.com" class="social-btn">📧 Email</a>
     </div>
 </section>
@@ -779,8 +1212,74 @@ footer p {
     <p>Hecho con ❤️ y creatividad</p>
 </footer>
 
+<!-- SCROLL TO TOP BUTTON -->
+<button class="scroll-to-top" id="scrollToTopBtn" onclick="scrollToTop()" title="Volver al inicio">↑</button>
+
 <script>
+// ============================================
+// SISTEMA DE TEMAS (DARK/LIGHT MODE)
+// ============================================
+function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.classList.toggle('light-mode');
+    const btn = document.querySelector('.theme-toggle');
+    
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    btn.textContent = isDark ? '🌙' : '☀️';
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const btn = document.querySelector('.theme-toggle');
+    
+    if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+        btn.textContent = '🌙';
+    } else {
+        btn.textContent = '☀️';
+    }
+}
+
+loadTheme();
+
+// ============================================
+// SCROLL TO TOP
+// ============================================
+const scrollBtn = document.getElementById('scrollToTopBtn');
+
+window.addEventListener('scroll', () => {
+    scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+});
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ============================================
+// NAVEGACIÓN ACTIVA EN NAVBAR
+// ============================================
+window.addEventListener('scroll', () => {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    let current = '';
+    
+    document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// ============================================
 // FILTRO DE GALERÍA
+// ============================================
 function filterGallery(category) {
     const cards = document.querySelectorAll('.card');
     const buttons = document.querySelectorAll('.filter-btn');
@@ -800,7 +1299,9 @@ function filterGallery(category) {
     });
 }
 
+// ============================================
 // NAVEGACIÓN EN MODAL
+// ============================================
 const images = ['#img1', '#img2', '#img3', '#img4', '#img5'];
 let currentImageIndex = 0;
 
@@ -831,105 +1332,202 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'ArrowLeft') changeImage(-1);
 });
 
-// FORMULARIO DE CONTACTO
+// ============================================
+// DETECTOR DE PALABRAS PROHIBIDAS
+// ============================================
+function containsForbiddenWords(text) {
+    const words = text.toLowerCase().split(/\s+/);
+    return words.some(word => 
+        CONFIG.forbiddenWords.some(forbidden => 
+            word.includes(forbidden)
+        )
+    );
+}
+
+// ============================================
+// SISTEMA DE RESEÑAS (LOCAL STORAGE)
+// ============================================
+function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    const container = document.getElementById('reviewsContainer');
+    
+    if (reviews.length === 0) {
+        container.innerHTML = `
+            <p style="text-align: center; grid-column: 1/-1; color: var(--text-secondary);">
+                Aún no hay reseñas. ¡Sé el primero en dejar una! 🚀
+            </p>
+        `;
+        return;
+    }
+    
+    container.innerHTML = reviews.map((review, index) => `
+        <div class="review-card" style="animation-delay: ${index * 0.1}s">
+            <div class="review-header">
+                <div class="review-name">${escapeHtml(review.name)}</div>
+                <div class="review-rating">${review.rating}</div>
+            </div>
+            <p class="review-text">"${escapeHtml(review.text)}"</p>
+            <div class="review-date">${new Date(review.date).toLocaleDateString('es-ES')}</div>
+        </div>
+    `).join('');
+}
+
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// FORMULARIO DE RESEÑA
+document.getElementById('reviewForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('reviewName').value.trim();
+    const text = document.getElementById('reviewText').value.trim();
+    const rating = document.getElementById('reviewRating').value;
+    const messageEl = document.getElementById('reviewMessage');
+    
+    // VALIDACIÓN
+    if (!name || !text || !rating) {
+        messageEl.textContent = '❌ Por favor completa todos los campos.';
+        messageEl.classList.add('error');
+        messageEl.classList.remove('success');
+        return;
+    }
+    
+    if (text.length < 10) {
+        messageEl.textContent = '❌ La reseña debe tener al menos 10 caracteres.';
+        messageEl.classList.add('error');
+        messageEl.classList.remove('success');
+        return;
+    }
+    
+    // DETECTOR DE PALABRAS PROHIBIDAS
+    if (containsForbiddenWords(text) || containsForbiddenWords(name)) {
+        messageEl.textContent = '❌ Tu reseña contiene palabras inapropiadas. Por favor revisa el contenido.';
+        messageEl.classList.add('error');
+        messageEl.classList.remove('success');
+        return;
+    }
+    
+    // GUARDAR RESEÑA
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews.unshift({
+        name,
+        text,
+        rating,
+        date: new Date().toISOString()
+    });
+    
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+    
+    messageEl.textContent = '✅ ¡Gracias por tu reseña! Aparecerá en la página.';
+    messageEl.classList.add('success');
+    messageEl.classList.remove('error');
+    
+    this.reset();
+    
+    setTimeout(() => {
+        messageEl.classList.remove('success');
+        messageEl.textContent = '';
+        loadReviews();
+    }, 2000);
+});
+
+// ============================================
+// FORMULARIO DE CONTACTO (FUNCIONAL)
+// ============================================
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const formMessage = document.getElementById('formMessage');
     const submitBtn = this.querySelector('.submit-btn');
     
-    // Datos del formulario
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const project = document.getElementById('project').value;
-    const message = document.getElementById('message').value;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const project = document.getElementById('project').value.trim();
+    const message = document.getElementById('message').value.trim();
     
-    // Usar EmailJS
-    const templateParams = {
-        from_name: name,
-        from_email: email,
-        project_type: project,
-        message: message,
-        to_email: 'medicenelpk@gmail.com'
-    };
+    // VALIDACIÓN BÁSICA
+    if (!name || !email || !project || !message) {
+        formMessage.textContent = '❌ Por favor completa todos los campos.';
+        formMessage.classList.add('error');
+        formMessage.classList.remove('success');
+        return;
+    }
     
     try {
         submitBtn.disabled = true;
-        submitBtn.textContent = '📧 Enviando...';
+        submitBtn.innerHTML = '<span class="spinner"></span>Enviando...';
         
-        // Inicializar EmailJS si no está cargado
-        if (!window.emailjs) {
-            // Cargar EmailJS desde CDN
-            await new Promise((resolve) => {
-                const script = document.createElement('script');
-                script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js';
-                script.onload = resolve;
-                document.head.appendChild(script);
-            });
-        }
-        
-        // Inicializar con tu service ID (público)
-        emailjs.init('service_placeholder');
-        
-        // Enviar email
-        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        // OPCIÓN 1: Enviar a Formspree (RECOMENDADO - SIN CONFIGURACIÓN)
+        const response = await fetch('https://formspree.io/f/xzzbqwad', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                service_id: 'service_placeholder',
-                template_id: 'template_placeholder',
-                user_id: 'public',
-                template_params: {
-                    from_name: name,
-                    from_email: email,
-                    project_type: project,
-                    message: message,
-                    to_email: 'medicenelpk@gmail.com'
-                }
+                name,
+                email,
+                project,
+                message,
+                timestamp: new Date().toLocaleString('es-ES')
             })
         });
         
-        // Si EmailJS no funciona, usar endpoint alternativo
-        const response2 = await fetch('https://formspree.io/f/xzzbqwad', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                project: project,
-                message: message
-            })
-        });
-        
-        if (response2.ok) {
+        if (response.ok) {
             formMessage.textContent = '✅ ¡Mensaje enviado! Te responderé pronto.';
             formMessage.classList.add('success');
             formMessage.classList.remove('error');
             
-            // Limpiar formulario
             this.reset();
             
-            // Ocultar mensaje después de 5 segundos
             setTimeout(() => {
                 formMessage.classList.remove('success');
                 formMessage.textContent = '';
             }, 5000);
+            
+            // OPCIÓN 2: Enviar a Discord (si está configurado)
+            if (CONFIG.discordWebhook) {
+                await fetch(CONFIG.discordWebhook, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        embeds: [{
+                            color: 3066993,
+                            title: '📧 Nuevo Mensaje de Contacto',
+                            fields: [
+                                { name: '👤 Nombre', value: name, inline: true },
+                                { name: '📧 Email', value: email, inline: true },
+                                { name: '🎨 Proyecto', value: project, inline: false },
+                                { name: '💬 Mensaje', value: message, inline: false }
+                            ],
+                            footer: { text: new Date().toLocaleString('es-ES') }
+                        }]
+                    })
+                }).catch(() => {}); // Silenciar error si no está configurado
+            }
         } else {
             throw new Error('Error en el envío');
         }
     } catch (error) {
-        formMessage.textContent = '❌ Hubo un error. Intenta nuevamente o contáctame por Discord.';
+        formMessage.textContent = '❌ Error al enviar. Intenta de nuevo o contáctame por Discord.';
         formMessage.classList.add('error');
         formMessage.classList.remove('success');
+        console.error('Error:', error);
     } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = '📧 Enviar Mensaje';
+        submitBtn.innerHTML = '📧 Enviar Mensaje';
     }
 });
+
+// CARGAR RESEÑAS AL INICIAR
+loadReviews();
 </script>
 
 </body>
